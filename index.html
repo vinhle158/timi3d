@@ -3,157 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dịch vụ in 3D FDM – TIMI 3D PRINT STUDIO</title>
+    <title>TIMI 3D PRINT STUDIO – Professional FDM Service</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #217fbe;
-            --secondary-color: #fcd739;
-            --bg-accent: #f8fafc;
+            --bambu-green: #00ae42;
+            --bambu-dark: #1a1a1a;
+            --bambu-gray: #f4f4f5;
+            --primary-blue: #003d52;
         }
+        
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            color: #1e293b;
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #18181b;
             scroll-behavior: smooth;
         }
-        .bg-primary { background-color: var(--primary-color); }
-        .text-primary { color: var(--primary-color); }
-        .border-primary { border-color: var(--primary-color); }
-        .btn-hover { transition: all 0.3s ease; }
-        .btn-hover:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(33, 127, 190, 0.3); }
+
+        .text-bambu { color: var(--bambu-green); }
+        .bg-bambu { background-color: var(--bambu-green); }
+        .border-bambu { border-color: var(--bambu-green); }
+        
+        .section-padding { padding: 80px 0; }
+        
+        .card-shadow {
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+        }
+        .card-shadow:hover {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
         input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-        .stat-bar { height: 6px; border-radius: 3px; background: #e2e8f0; overflow: hidden; }
-        .stat-fill { height: 100%; border-radius: 3px; }
+
+        .btn-primary {
+            background-color: var(--bambu-green);
+            transition: all 0.2s ease;
+        }
+        .btn-primary:hover {
+            background-color: #008f36;
+            transform: scale(1.02);
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--bambu-green);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        .active-material {
+            border-color: var(--bambu-green) !important;
+            background-color: rgba(0, 174, 66, 0.05);
+            color: var(--bambu-green) !important;
+        }
+
+        .stat-bar { height: 8px; border-radius: 4px; background: #f1f5f9; border: 1px solid #e2e8f0; overflow: hidden; }
     </style>
 </head>
-<body class="bg-white">
-
-    <!-- Top Bar -->
-    <div class="bg-zinc-900 text-white py-2 px-4 text-center text-xs md:text-sm font-medium tracking-wide">
-        <div class="container mx-auto flex flex-col md:flex-row justify-center items-center gap-2 md:gap-8">
-            <span><i class="fas fa-map-marker-alt text-secondary-color mr-2"></i>C11-36, ĐƯỜNG SỐ 7, KĐT TÂY BẮC, P. RẠCH GIÁ, AN GIANG</span>
-            <span><i class="fas fa-phone-alt text-secondary-color mr-2"></i>HOTLINE: <a href="tel:0917777897" class="hover:text-secondary-color">0917 777 897</a></span>
-        </div>
-    </div>
+<body>
 
     <!-- Header -->
-    <header class="bg-white/90 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-4 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center">
-                <div class="text-xl md:text-2xl font-black text-primary italic uppercase tracking-tighter leading-none">
-                    TIMI 3D <span class="text-zinc-800 block md:inline text-lg md:text-xl not-italic">PRINT STUDIO</span>
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="container mx-auto px-4 h-16 md:h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-bambu rounded flex items-center justify-center">
+                    <i class="fas fa-cube text-white text-lg"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-tight leading-none text-gray-900 text-nowrap">TIMI 3D</span>
+                    <span class="text-[10px] font-bold text-gray-400 tracking-widest uppercase">Print Studio</span>
                 </div>
             </a>
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#calculator" class="text-sm font-bold text-gray-600 hover:text-primary transition uppercase tracking-wider">Tính giá</a>
-                <a href="#pricing" class="text-sm font-bold text-gray-600 hover:text-primary transition uppercase tracking-wider">Bảng giá</a>
-                <a href="#compare" class="text-sm font-bold text-gray-600 hover:text-primary transition uppercase tracking-wider">Vật liệu</a>
-                <a href="#contact" class="bg-primary text-white px-5 py-2.5 rounded-full text-sm font-bold btn-hover uppercase tracking-wider">Liên hệ ngay</a>
-            </div>
-            <button class="md:hidden text-2xl text-zinc-800"><i class="fas fa-bars"></i></button>
+            
+            <nav class="hidden md:flex items-center space-x-10">
+                <a href="#calculator" class="nav-link text-sm text-gray-600">Công cụ tính giá</a>
+                <a href="#pricing" class="nav-link text-sm text-gray-600">Bảng giá vật liệu</a>
+                <a href="#contact" class="btn-primary text-white px-6 py-2 rounded font-semibold text-sm">Gửi yêu cầu in</a>
+            </nav>
+            
+            <button class="md:hidden text-gray-800 text-xl"><i class="fas fa-bars"></i></button>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative py-12 md:py-24 overflow-hidden">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12 relative z-10">
+    <section class="bg-gray-50 overflow-hidden">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center py-16 md:py-24 gap-12">
             <div class="md:w-1/2 text-center md:text-left">
-                <span class="inline-block px-4 py-1.5 bg-blue-50 text-primary text-xs font-black uppercase tracking-widest rounded-full mb-6 italic">Dịch vụ in 3D FDM Chuyên nghiệp</span>
-                <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight uppercase">Biến ý tưởng <br><span class="text-primary italic">thành hiện thực</span></h1>
-                <p class="text-lg text-gray-500 mb-8 max-w-lg leading-relaxed">
-                    TIMI 3D cung cấp giải pháp tạo mẫu nhanh với độ chính xác cao. Chỉ tính tiền nhựa, miễn phí tiền công in. Báo giá tự động và giao hàng nhanh tại Rạch Giá.
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-[1.1] tracking-tight text-gray-900">
+                    Sáng tạo không <br><span class="text-bambu italic">giới hạn.</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-10 max-w-lg leading-relaxed">
+                    Dịch vụ in 3D FDM chất lượng cao tại Rạch Giá. Chúng tôi tập trung vào độ chính xác, tốc độ và chi phí tối ưu nhất cho mọi dự án.
                 </p>
                 <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                    <a href="#calculator" class="bg-primary text-white px-8 py-4 rounded-2xl font-black btn-hover uppercase tracking-wide">Dùng thử bộ tính giá</a>
-                    <a href="https://zalo.me/0917777897" class="bg-zinc-900 text-white px-8 py-4 rounded-2xl font-black btn-hover uppercase tracking-wide">Gửi file qua Zalo</a>
+                    <a href="#calculator" class="btn-primary text-white px-10 py-4 rounded font-bold text-base shadow-lg shadow-green-200 text-center">Bắt đầu ngay</a>
+                    <a href="https://facebook.com/in3drga" target="_blank" class="bg-white border border-gray-200 text-gray-800 px-10 py-4 rounded font-bold text-base hover:bg-gray-50 transition text-center">Facebook Page</a>
+                </div>
+                <div class="mt-10 flex items-center justify-center md:justify-start gap-8 text-gray-400">
+                    <div class="text-center md:text-left">
+                        <div class="text-xl font-bold text-gray-900">400mm</div>
+                        <div class="text-[10px] uppercase font-bold tracking-widest text-gray-500">Khổ in tối đa</div>
+                    </div>
+                    <div class="w-px h-8 bg-gray-200"></div>
+                    <div class="text-center md:text-left">
+                        <div class="text-xl font-bold text-gray-900">0.1mm</div>
+                        <div class="text-[10px] uppercase font-bold tracking-widest text-gray-500">Độ mịn lớp in</div>
+                    </div>
+                    <div class="w-px h-8 bg-gray-200"></div>
+                    <div class="text-center md:text-left">
+                        <div class="text-xl font-bold text-gray-900">24/7</div>
+                        <div class="text-[10px] uppercase font-bold tracking-widest text-gray-500">Hệ thống vận hành</div>
+                    </div>
                 </div>
             </div>
-            <div class="md:w-1/2 relative">
-                <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-100/50 rounded-full blur-3xl"></div>
-                <div class="rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[4/3] border-8 border-white bg-gray-200">
-                    <img src="https://i.ibb.co/pr9jmkHB/582103733-122123767202991060-7142237510862303046-n.jpg" alt="TIMI 3D Printing" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600?text=TIMI+3D+STUDIO'">
-                </div>
-                <!-- Mini Stats Overlay -->
-                <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl hidden md:block border border-gray-100">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center text-white text-xl">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div>
-                            <div class="text-xs font-bold text-gray-400 uppercase">Chất lượng</div>
-                            <div class="text-lg font-black italic">Tối ưu mẫu in</div>
-                        </div>
-                    </div>
+            <div class="md:w-1/2">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] bg-white border border-gray-100">
+                    <img src="https://i.postimg.cc/Pqn6vsZx/DSC00257.jpg" alt="TIMI 3D Studio" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Quick Calculator Tool (High Priority) -->
-    <section id="calculator" class="py-20 bg-accent bg-slate-50">
+    <!-- Professional Calculator Section -->
+    <section id="calculator" class="section-padding bg-white">
         <div class="container mx-auto px-4">
-            <div class="max-w-5xl mx-auto">
-                <div class="bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-gray-100">
-                    <div class="grid grid-cols-1 lg:grid-cols-5">
-                        <!-- Inputs -->
-                        <div class="lg:col-span-3 p-8 md:p-12">
-                            <h2 class="text-3xl font-black mb-2 uppercase tracking-tight italic">Tính giá nhanh</h2>
-                            <p class="text-gray-400 text-sm mb-10">Nhập khối lượng file để nhận báo giá dự tính ngay lập tức.</p>
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Ước tính chi phí nhanh</h2>
+                    <p class="text-gray-500">Hệ thống báo giá tự động dựa trên khối lượng file 3D của bạn.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <!-- Configurator -->
+                    <div class="lg:col-span-7 bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100">
+                        <div class="space-y-10">
+                            <div>
+                                <h3 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-6 italic">1. Lựa chọn vật liệu</h3>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                    <button onclick="setMaterial('petg')" id="btn-petg" class="mat-btn p-5 rounded-xl border-2 border-white bg-white text-left card-shadow">
+                                        <div class="font-bold text-gray-900">PETG</div>
+                                        <div class="text-[10px] text-gray-400 mt-1 uppercase">Đa dụng & Bền</div>
+                                    </button>
+                                    <button onclick="setMaterial('pla')" id="btn-pla" class="mat-btn p-5 rounded-xl border-2 border-white bg-white text-left card-shadow">
+                                        <div class="font-bold text-gray-900">PLA</div>
+                                        <div class="text-[10px] text-gray-400 mt-1 uppercase">Thẩm mỹ cao</div>
+                                    </button>
+                                    <button onclick="setMaterial('abs')" id="btn-abs" class="mat-btn p-5 rounded-xl border-2 border-white bg-white text-left card-shadow">
+                                        <div class="font-bold text-gray-900">ABS/ASA</div>
+                                        <div class="text-[10px] text-gray-400 mt-1 uppercase">Kỹ thuật cao</div>
+                                    </button>
+                                </div>
+                                <input type="hidden" id="calc-material" value="petg">
+                            </div>
+
+                            <div>
+                                <h3 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-6 italic">2. Khối lượng dự kiến</h3>
+                                <div class="flex items-center bg-white border border-gray-200 rounded-2xl p-2 focus-within:border-bambu focus-within:ring-4 focus-within:ring-green-50 transition">
+                                    <input type="number" id="calc-weight" placeholder="0" class="flex-1 bg-transparent border-none p-4 text-3xl font-extrabold outline-none text-gray-900">
+                                    <span class="px-6 text-xl font-bold text-gray-300">Gram</span>
+                                </div>
+                                <div id="calc-rate-info" class="mt-4 text-sm font-medium text-gray-400 italic">Nhập khối lượng file để tính giá...</div>
+                            </div>
+
+                            <div class="pt-6 border-t border-gray-200">
+                                <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest block mb-3">Mã ưu đãi (CTV Access)</label>
+                                <input type="password" id="calc-password" placeholder="Nhập mã..." class="w-full sm:w-64 bg-white border border-gray-200 p-3 rounded-xl outline-none focus:border-bambu transition text-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="lg:col-span-5 bg-bambu rounded-3xl p-8 md:p-10 text-white shadow-2xl shadow-green-100 flex flex-col justify-between h-full">
+                        <div>
+                            <h3 class="text-lg font-bold mb-8 flex items-center gap-2">
+                                <i class="fas fa-calculator opacity-50"></i> Chi tiết báo giá
+                            </h3>
                             
-                            <div class="space-y-8">
-                                <div>
-                                    <label class="block text-xs font-black uppercase tracking-widest text-gray-400 mb-3">1. Chọn vật liệu</label>
-                                    <div class="grid grid-cols-3 gap-3">
-                                        <button onclick="setMaterial('petg')" id="btn-petg" class="mat-btn p-4 rounded-2xl border-2 border-gray-100 font-bold hover:border-primary transition text-sm">PETG</button>
-                                        <button onclick="setMaterial('pla')" id="btn-pla" class="mat-btn p-4 rounded-2xl border-2 border-gray-100 font-bold hover:border-primary transition text-sm">PLA</button>
-                                        <button onclick="setMaterial('abs')" id="btn-abs" class="mat-btn p-4 rounded-2xl border-2 border-gray-100 font-bold hover:border-primary transition text-sm">ABS/ASA</button>
-                                    </div>
-                                    <input type="hidden" id="calc-material" value="petg">
+                            <div class="space-y-6">
+                                <div class="flex justify-between border-b border-white/20 pb-4">
+                                    <span class="text-white/80 text-sm">Tạm tính (Nhựa)</span>
+                                    <span id="res-subtotal" class="font-bold text-lg">0đ</span>
                                 </div>
-                                
-                                <div>
-                                    <label class="block text-xs font-black uppercase tracking-widest text-gray-400 mb-3">2. Khối lượng mẫu (Gram)</label>
-                                    <div class="relative">
-                                        <input type="number" id="calc-weight" placeholder="0.0" class="w-full bg-gray-50 border-none p-6 rounded-2xl text-3xl font-black text-primary focus:ring-4 focus:ring-primary/10 transition placeholder:text-gray-200">
-                                        <span class="absolute right-6 top-1/2 -translate-y-1/2 text-xl font-bold text-gray-300">g</span>
-                                    </div>
-                                    <div id="calc-rate-info" class="mt-4 text-xs font-bold italic py-2 px-4 bg-white rounded-lg inline-block shadow-sm">Bắt đầu nhập khối lượng...</div>
+                                <div class="flex justify-between border-b border-white/20 pb-4">
+                                    <span class="text-white/80 text-sm">Ưu đãi (In > 300g)</span>
+                                    <span id="res-discount" class="font-bold text-lg">-0đ</span>
                                 </div>
-
-                                <div>
-                                    <label class="block text-xs font-black uppercase tracking-widest text-gray-400 mb-3">Mã ưu đãi (Dành cho CTV)</label>
-                                    <input type="password" id="calc-password" placeholder="••••••" class="w-full bg-gray-50 border-none p-4 rounded-2xl text-sm focus:ring-2 focus:ring-gray-200 transition">
+                                <div id="ctv-row" class="hidden flex justify-between bg-black/20 p-4 rounded-xl border border-white/10">
+                                    <span class="font-bold text-sm">GIÁ CTV (-30%)</span>
+                                    <span id="res-ctv" class="font-black text-xl">0đ</span>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- Results -->
-                        <div class="lg:col-span-2 bg-zinc-900 p-8 md:p-12 text-white flex flex-col justify-center">
-                            <div class="text-center mb-8">
-                                <div class="text-xs font-black uppercase tracking-[0.3em] text-zinc-500 mb-2">Thanh toán dự tính</div>
-                                <div id="res-total" class="text-6xl font-black text-primary">0đ</div>
-                                <div id="min-price-warning" class="hidden mt-4 inline-block px-3 py-1 bg-red-500/20 text-red-400 text-[10px] font-black rounded-full uppercase tracking-tighter border border-red-500/30">
-                                    <i class="fas fa-exclamation-circle mr-1"></i> Áp dụng giá tối thiểu 20.000đ
-                                </div>
-                            </div>
 
-                            <div class="space-y-4 border-t border-white/10 pt-8">
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-zinc-500 font-bold uppercase tracking-tighter text-[10px]">Tạm tính:</span>
-                                    <span id="res-subtotal" class="font-bold">0đ</span>
-                                </div>
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-zinc-500 font-bold uppercase tracking-tighter text-[10px]">Ưu đãi:</span>
-                                    <span id="res-discount" class="font-bold text-green-400">-0đ</span>
-                                </div>
-                                <div id="ctv-row" class="hidden flex justify-between text-sm bg-primary/10 p-3 rounded-xl border border-primary/20">
-                                    <span class="text-primary font-black uppercase text-[10px]">Giá CTV (-30%):</span>
-                                    <span id="res-ctv" class="font-black text-primary">0đ</span>
-                                </div>
+                        <div class="mt-12 text-center">
+                            <div id="min-price-warning" class="hidden mb-4 py-1.5 px-4 bg-yellow-400 text-green-900 text-[10px] font-black uppercase rounded-full inline-block">
+                                <i class="fas fa-exclamation-triangle mr-1"></i> Giá in tối thiểu: 20.000đ
                             </div>
+                            <div class="text-xs uppercase tracking-[0.2em] text-white/70 mb-2">Thanh toán dự kiến</div>
+                            <div id="res-total" class="text-6xl font-black mb-10 leading-none">0đ</div>
                             
-                            <a href="https://zalo.me/0917777897" class="mt-10 block text-center bg-white text-zinc-900 py-4 rounded-2xl font-black btn-hover uppercase tracking-widest text-sm">Đặt hàng file này</a>
+                            <a href="https://zalo.me/0917777897" class="block w-full bg-white text-bambu py-5 rounded-2xl font-extrabold text-lg transition hover:bg-gray-100 uppercase tracking-widest text-center">
+                                Gửi file in ngay
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -161,270 +224,232 @@
         </div>
     </section>
 
-    <!-- Detailed Pricing Section -->
-    <section id="pricing" class="py-20">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-black uppercase italic mb-4">Biểu giá <span class="text-primary">vật liệu</span></h2>
-                <div class="w-16 h-1.5 bg-primary mx-auto rounded-full"></div>
-            </div>
+    <!-- Pricing Tables Section -->
+    <section id="pricing" class="section-padding bg-gray-50 border-y border-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-extrabold mb-4 uppercase tracking-tight">Bảng giá nhựa tiêu chuẩn</h2>
+            <div class="w-12 h-1 bg-bambu mx-auto mb-16"></div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Detailed Table -->
-                <div class="lg:col-span-2 bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden">
-                    <table class="w-full text-left">
-                        <thead>
-                            <tr class="bg-gray-50/50">
-                                <th class="p-6 text-xs font-black uppercase tracking-widest text-gray-400 border-b">Loại vật liệu</th>
-                                <th class="p-6 text-xs font-black uppercase tracking-widest text-red-500 border-b">Khối lượng < 300g</th>
-                                <th class="p-6 text-xs font-black uppercase tracking-widest text-green-600 border-b">Khối lượng ≥ 300g</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-50">
-                            <tr class="hover:bg-blue-50/20 transition">
-                                <td class="p-6 font-black italic">PETG</td>
-                                <td class="p-6 font-bold">1.000đ/g</td>
-                                <td class="p-6 text-primary font-black">550đ/g</td>
-                            </tr>
-                            <tr class="hover:bg-blue-50/20 transition">
-                                <td class="p-6 font-black italic">PLA</td>
-                                <td class="p-6 font-bold">1.100đ/g</td>
-                                <td class="p-6 text-primary font-black">650đ/g</td>
-                            </tr>
-                            <tr class="hover:bg-blue-50/20 transition">
-                                <td class="p-6 font-black italic">ABS / ASA / TPU</td>
-                                <td class="p-6 font-bold">1.200đ/g</td>
-                                <td class="p-6 text-primary font-black">750đ/g</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="p-6 bg-red-50/50 flex items-center gap-4 border-t border-red-50">
-                        <span class="w-10 h-10 bg-red-500 text-white rounded-xl flex items-center justify-center font-bold text-lg italic">!</span>
-                        <p class="text-sm text-red-700 font-bold uppercase tracking-tight">Giá tối thiểu mỗi mẫu in: <span class="text-lg">20.000đ</span></p>
-                    </div>
-                </div>
-
-                <!-- Discount Policy -->
-                <div class="bg-zinc-900 rounded-[2rem] p-10 text-white shadow-xl relative overflow-hidden">
-                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-3xl"></div>
-                    <h3 class="text-2xl font-black uppercase italic mb-8 border-b border-white/10 pb-4">Chính sách <span class="text-primary">Ưu đãi</span></h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="text-primary text-xl mt-1 font-black">05%</div>
-                            <div>
-                                <div class="font-bold text-sm uppercase">Đơn hàng > 500k</div>
-                                <p class="text-zinc-500 text-xs mt-1 italic">Tự động trừ trực tiếp vào hóa đơn.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="text-primary text-xl mt-1 font-black">10%</div>
-                            <div>
-                                <div class="font-bold text-sm uppercase">Đơn hàng > 1 Triệu</div>
-                                <p class="text-zinc-500 text-xs mt-1 italic">Áp dụng cho mọi loại vật liệu nhựa.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="text-primary text-xl mt-1 font-black">15%</div>
-                            <div>
-                                <div class="font-bold text-sm uppercase">Đơn hàng > 1.5 Triệu</div>
-                                <p class="text-zinc-500 text-xs mt-1 italic">Ưu đãi in số lượng lớn giá cực tốt.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Filament Comparison (Full Width Grid) -->
-    <section id="compare" class="py-20 bg-slate-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-black uppercase italic mb-4">So sánh <span class="text-primary">vật liệu</span></h2>
-                <p class="text-gray-400 text-sm italic">Mỗi loại nhựa có đặc tính riêng phù hợp cho từng mục đích sử dụng.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- PLA Card -->
-                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col">
-                    <div class="flex justify-between items-center mb-6">
-                        <h4 class="text-xl font-black italic text-green-600">PLA</h4>
-                        <span class="px-2 py-1 bg-green-50 text-green-600 text-[10px] font-black rounded uppercase">Dễ in</span>
-                    </div>
-                    <div class="space-y-4 mb-8 flex-grow">
-                        <div>
-                            <div class="flex justify-between text-[10px] font-black uppercase text-gray-400 mb-1"><span>Độ bền</span><span>60%</span></div>
-                            <div class="stat-bar"><div class="stat-fill bg-green-500" style="width: 60%"></div></div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-[10px] font-black uppercase text-gray-400 mb-1"><span>Chịu nhiệt</span><span>30%</span></div>
-                            <div class="stat-bar"><div class="stat-fill bg-red-400" style="width: 30%"></div></div>
-                        </div>
-                    </div>
-                    <p class="text-xs text-gray-500 leading-relaxed italic">Phù hợp in mô hình trang trí, đồ chơi, vật dụng trong nhà không chịu nhiệt.</p>
-                </div>
-
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <!-- PETG Card -->
-                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col">
-                    <div class="flex justify-between items-center mb-6">
-                        <h4 class="text-xl font-black italic text-blue-600">PETG</h4>
-                        <span class="px-2 py-1 bg-blue-50 text-blue-600 text-[10px] font-black rounded uppercase">Cân bằng</span>
-                    </div>
-                    <div class="space-y-4 mb-8 flex-grow">
-                        <div>
-                            <div class="flex justify-between text-[10px] font-black uppercase text-gray-400 mb-1"><span>Độ bền</span><span>80%</span></div>
-                            <div class="stat-bar"><div class="stat-fill bg-blue-500" style="width: 80%"></div></div>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-black mx-auto mb-6">PETG</div>
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-500 uppercase tracking-tighter font-bold">Mẫu < 300g</span>
+                            <span class="font-bold text-gray-900">1.000đ/g</span>
                         </div>
-                        <div>
-                            <div class="flex justify-between text-[10px] font-black uppercase text-gray-400 mb-1"><span>Chịu nhiệt</span><span>60%</span></div>
-                            <div class="stat-bar"><div class="stat-fill bg-blue-400" style="width: 60%"></div></div>
+                        <div class="flex justify-between items-center text-sm p-3 bg-green-50 rounded-lg">
+                            <span class="text-bambu font-bold uppercase tracking-tighter">Mẫu ≥ 300g</span>
+                            <span class="font-black text-bambu">550đ/g</span>
                         </div>
                     </div>
-                    <p class="text-xs text-gray-500 leading-relaxed italic">Vật liệu quốc dân cho cơ khí, đồ dùng gia đình, chi tiết máy chịu va đập.</p>
+                </div>
+
+                <!-- PLA Card -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center font-black mx-auto mb-6">PLA</div>
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-500 uppercase tracking-tighter font-bold">Mẫu < 300g</span>
+                            <span class="font-bold text-gray-900">1.100đ/g</span>
+                        </div>
+                        <div class="flex justify-between items-center text-sm p-3 bg-green-50 rounded-lg">
+                            <span class="text-bambu font-bold uppercase tracking-tighter">Mẫu ≥ 300g</span>
+                            <span class="font-black text-bambu">650đ/g</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- ABS Card -->
-                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col">
-                    <div class="flex justify-between items-center mb-6">
-                        <h4 class="text-xl font-black italic text-orange-600">ABS / ASA</h4>
-                        <span class="px-2 py-1 bg-orange-50 text-orange-600 text-[10px] font-black rounded uppercase">Kỹ thuật</span>
-                    </div>
-                    <div class="space-y-4 mb-8 flex-grow">
-                        <div>
-                            <div class="flex justify-between text-[10px] font-black uppercase text-gray-400 mb-1"><span>Độ bền</span><span>85%</span></div>
-                            <div class="stat-bar"><div class="stat-fill bg-orange-500" style="width: 85%"></div></div>
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+                    <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center font-black mx-auto mb-6 text-xs">ABS/ASA</div>
+                    <div class="space-y-4 mb-6">
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="text-gray-500 uppercase tracking-tighter font-bold">Mẫu < 300g</span>
+                            <span class="font-bold text-gray-900">1.200đ/g</span>
                         </div>
-                        <div>
-                            <div class="flex justify-between text-[10px] font-black uppercase text-gray-400 mb-1"><span>Chịu nhiệt</span><span>90%</span></div>
-                            <div class="stat-bar"><div class="stat-fill bg-orange-400" style="width: 90%"></div></div>
+                        <div class="flex justify-between items-center text-sm p-3 bg-green-50 rounded-lg">
+                            <span class="text-bambu font-bold uppercase tracking-tighter">Mẫu ≥ 300g</span>
+                            <span class="font-black text-bambu">750đ/g</span>
                         </div>
                     </div>
-                    <p class="text-xs text-gray-500 leading-relaxed italic">Linh kiện ô tô, đồ ngoài trời (ASA), chịu được nhiệt độ cao trên 100°C.</p>
-                </div>
-
-                <!-- TPU Card -->
-                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col">
-                    <div class="flex justify-between items-center mb-6">
-                        <h4 class="text-xl font-black italic text-purple-600">TPU</h4>
-                        <span class="px-2 py-1 bg-purple-50 text-purple-600 text-[10px] font-black rounded uppercase">Nhựa dẻo</span>
-                    </div>
-                    <div class="space-y-4 mb-8 flex-grow">
-                        <div>
-                            <div class="flex justify-between text-[10px] font-black uppercase text-gray-400 mb-1"><span>Độ bền</span><span>95%</span></div>
-                            <div class="stat-bar"><div class="stat-fill bg-purple-500" style="width: 95%"></div></div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-[10px] font-black uppercase text-gray-400 mb-1"><span>Độ dẻo</span><span>100%</span></div>
-                            <div class="stat-bar"><div class="stat-fill bg-purple-400" style="width: 100%"></div></div>
-                        </div>
-                    </div>
-                    <p class="text-xs text-gray-500 leading-relaxed italic">Gioăng cao su, đệm giảm chấn, các chi tiết cần co giãn và không thể bị phá hủy.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Ordering Guide -->
-    <section class="py-20">
+    <!-- Material Comparison Section -->
+    <section id="compare" class="section-padding bg-white">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h2 class="text-4xl font-black uppercase italic mb-8 leading-tight">Quy trình <br><span class="text-primary">làm việc</span> đơn giản</h2>
-                    <div class="space-y-8">
-                        <div class="flex gap-6">
-                            <div class="w-14 h-14 bg-zinc-900 text-white rounded-2xl flex items-center justify-center font-black text-xl flex-shrink-0">1</div>
-                            <div>
-                                <h4 class="font-black uppercase italic text-lg">Gửi file mẫu in</h4>
-                                <p class="text-gray-500 text-sm mt-1">Zalo: <span class="text-primary font-bold">0917 777 897</span>. Hỗ trợ định dạng STL, STEP, 3MF.</p>
+            <div class="text-center mb-20">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4 uppercase tracking-tighter">Phân tích vật liệu in</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto">Mỗi loại nhựa được tinh chỉnh thông số tối ưu để đạt độ bền và thẩm mỹ cao nhất.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- PETG Column -->
+                <div class="space-y-8 bg-gray-50 p-6 rounded-3xl border border-gray-200 card-shadow">
+                    <h4 class="font-black text-primary-blue text-xl border-l-4 border-bambu pl-3">Nhựa PETG</h4>
+                    <ul class="space-y-6">
+                        <li>
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs font-bold text-gray-700 uppercase">Độ bền va đập</span>
+                                <span class="text-xs font-black text-bambu">85%</span>
                             </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center font-black text-xl flex-shrink-0">2</div>
-                            <div>
-                                <h4 class="font-black uppercase italic text-lg">Báo giá chuẩn</h4>
-                                <p class="text-gray-500 text-sm mt-1">Phòng kỹ thuật kiểm tra file và báo khối lượng nhựa thực tế trong 30p.</p>
+                            <div class="stat-bar"><div class="bg-bambu h-full rounded w-[85%]"></div></div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs font-bold text-gray-700 uppercase">Chịu nhiệt (75°C)</span>
+                                <span class="text-xs font-black text-bambu">65%</span>
                             </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="w-14 h-14 bg-zinc-900 text-white rounded-2xl flex items-center justify-center font-black text-xl flex-shrink-0">3</div>
-                            <div>
-                                <h4 class="font-black uppercase italic text-lg">Gia công in 3D</h4>
-                                <p class="text-gray-500 text-sm mt-1">Sử dụng dàn máy hiện đại, đảm bảo độ mịn Layer Height từ 0.1mm - 0.3mm.</p>
+                            <div class="stat-bar"><div class="bg-bambu h-full rounded w-[65%]"></div></div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs font-bold text-gray-700 uppercase">Độ bám dính</span>
+                                <span class="text-xs font-black text-bambu">95%</span>
                             </div>
-                        </div>
-                    </div>
+                            <div class="stat-bar"><div class="bg-bambu h-full rounded w-[95%]"></div></div>
+                        </li>
+                    </ul>
                 </div>
-                <!-- Standard Specs Panel -->
-                <div class="bg-primary rounded-[3rem] p-10 text-white shadow-2xl relative">
-                    <h3 class="text-2xl font-black uppercase italic mb-8 text-secondary-color">Thông số máy in chuẩn</h3>
-                    <div class="grid grid-cols-2 gap-8">
-                        <div class="border-b border-white/10 pb-4">
-                            <div class="text-[10px] font-black uppercase tracking-widest text-blue-200">Gia tốc</div>
-                            <div class="text-xl font-black">2000 mm/s²</div>
-                        </div>
-                        <div class="border-b border-white/10 pb-4">
-                            <div class="text-[10px] font-black uppercase tracking-widest text-blue-200">Tốc độ</div>
-                            <div class="text-xl font-black">50 mm/s</div>
-                        </div>
-                        <div class="border-b border-white/10 pb-4">
-                            <div class="text-[10px] font-black uppercase tracking-widest text-blue-200">Vỏ ngoài</div>
-                            <div class="text-xl font-black">1.2 mm Shell</div>
-                        </div>
-                        <div class="border-b border-white/10 pb-4">
-                            <div class="text-[10px] font-black uppercase tracking-widest text-blue-200">Thời gian lớp</div>
-                            <div class="text-xl font-black">Min 10s</div>
-                        </div>
-                    </div>
-                    <div class="mt-8 pt-8 border-t border-white/10 text-sm italic opacity-80 leading-relaxed">
-                        Mọi thông số đều được tinh chỉnh tối ưu nhất dựa trên 5 năm kinh nghiệm thực chiến của Studio.
-                    </div>
+
+                <!-- PLA Column -->
+                <div class="space-y-8 bg-gray-50 p-6 rounded-3xl border border-gray-200 card-shadow">
+                    <h4 class="font-black text-gray-900 text-xl border-l-4 border-green-500 pl-3">Nhựa PLA</h4>
+                    <ul class="space-y-6">
+                        <li>
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs font-bold text-gray-700 uppercase">Độ bền va đập</span>
+                                <span class="text-xs font-black text-green-600">50%</span>
+                            </div>
+                            <div class="stat-bar"><div class="bg-green-500 h-full rounded w-[50%]"></div></div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs font-bold text-gray-700 uppercase">Độ mịn bề mặt</span>
+                                <span class="text-xs font-black text-green-600">100%</span>
+                            </div>
+                            <div class="stat-bar"><div class="bg-green-500 h-full rounded w-[100%]"></div></div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs font-bold text-gray-700 uppercase">Dễ in mẫu khó</span>
+                                <span class="text-xs font-black text-green-600">95%</span>
+                            </div>
+                            <div class="stat-bar"><div class="bg-green-500 h-full rounded w-[95%]"></div></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- ABS Column -->
+                <div class="space-y-8 bg-gray-50 p-6 rounded-3xl border border-gray-200 card-shadow">
+                    <h4 class="font-black text-gray-900 text-xl border-l-4 border-orange-500 pl-3 text-nowrap">Nhựa ABS/ASA</h4>
+                    <ul class="space-y-6">
+                        <li>
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs font-bold text-gray-700 uppercase">Chịu nhiệt (>100°C)</span>
+                                <span class="text-xs font-black text-orange-600">95%</span>
+                            </div>
+                            <div class="stat-bar"><div class="bg-orange-500 h-full rounded w-[95%]"></div></div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs font-bold text-gray-700 uppercase">Kháng tia UV (ASA)</span>
+                                <span class="text-xs font-black text-orange-600">100%</span>
+                            </div>
+                            <div class="stat-bar"><div class="bg-orange-500 h-full rounded w-[100%]"></div></div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs font-bold text-gray-700 uppercase">Độ cứng vật lý</span>
+                                <span class="text-xs font-black text-orange-600">90%</span>
+                            </div>
+                            <div class="stat-bar"><div class="bg-orange-500 h-full rounded w-[90%]"></div></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- TPU Column -->
+                <div class="space-y-8 bg-gray-50 p-6 rounded-3xl border border-gray-200 card-shadow">
+                    <h4 class="font-black text-gray-900 text-xl border-l-4 border-purple-500 pl-3">Nhựa TPU (Dẻo)</h4>
+                    <ul class="space-y-6">
+                        <li>
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs font-bold text-gray-700 uppercase">Độ linh hoạt</span>
+                                <span class="text-xs font-black text-purple-600">100%</span>
+                            </div>
+                            <div class="stat-bar"><div class="bg-purple-500 h-full rounded w-[100%]"></div></div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs font-bold text-gray-700 uppercase">Kháng mài mòn</span>
+                                <span class="text-xs font-black text-purple-600">95%</span>
+                            </div>
+                            <div class="stat-bar"><div class="bg-purple-500 h-full rounded w-[95%]"></div></div>
+                        </li>
+                        <li>
+                            <div class="flex justify-between items-end mb-2">
+                                <span class="text-xs font-bold text-gray-700 uppercase">Độ bền xé</span>
+                                <span class="text-xs font-black text-purple-600">90%</span>
+                            </div>
+                            <div class="stat-bar"><div class="bg-purple-500 h-full rounded w-[90%]"></div></div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer / Contact Section -->
-    <footer id="contact" class="bg-zinc-900 text-white pt-20">
-        <div class="container mx-auto px-4 pb-20">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <!-- Footer -->
+    <footer id="contact" class="bg-zinc-900 text-white pt-20 pb-10 border-t border-white/5">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 pb-20 border-b border-white/5">
                 <div>
-                    <h2 class="text-3xl md:text-5xl font-black text-primary italic mb-6 uppercase leading-tight">TIMI 3D <br><span class="text-white not-italic">PRINT STUDIO</span></h2>
-                    <p class="text-zinc-500 font-bold uppercase tracking-widest mb-10 text-sm">DỊCH VỤ IN 3D FDM CHUYÊN NGHIỆP</p>
+                    <h2 class="text-3xl font-extrabold mb-4 italic text-white uppercase text-nowrap">TIMI 3D <span class="text-bambu">PRINT STUDIO</span></h2>
+                    <p class="text-zinc-500 font-bold uppercase tracking-[0.3em] text-[10px] mb-12">DỊCH VỤ IN 3D FDM CHUYÊN NGHIỆP</p>
                     
-                    <div class="space-y-6">
-                        <div class="flex items-center gap-6">
-                            <div class="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center text-primary"><i class="fas fa-map-marker-alt"></i></div>
-                            <div class="text-zinc-300 font-medium">C11-36, đường số 7, KĐT TÂY BẮC, P. RẠCH GIÁ, AN GIANG</div>
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-5">
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-bambu shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="text-zinc-400 text-sm leading-relaxed">
+                                C11-36, đường số 7, KĐT TÂY BẮC,<br>
+                                Phường Rạch Giá, Thành phố Rạch Giá, An Giang
+                            </div>
                         </div>
-                        <div class="flex items-center gap-6">
-                            <div class="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center text-primary"><i class="fas fa-phone-alt"></i></div>
-                            <a href="tel:0917777897" class="text-zinc-300 font-black text-xl hover:text-primary transition">0917 777 897</a>
+                        <div class="flex items-center gap-5">
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-bambu shrink-0">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <a href="tel:0917777897" class="text-zinc-100 font-black text-xl hover:text-bambu transition tracking-tight">0917 777 897</a>
                         </div>
-                        <div class="flex items-center gap-6">
-                            <div class="w-12 h-12 bg-zinc-800 rounded-xl flex items-center justify-center text-primary"><i class="fab fa-facebook-f"></i></div>
-                            <a href="https://facebook.com/in3drga" target="_blank" class="text-zinc-300 font-medium hover:text-primary transition">facebook.com/in3drga</a>
+                        <div class="flex items-center gap-5">
+                            <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-bambu shrink-0">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <a href="https://facebook.com/in3drga" target="_blank" class="text-zinc-400 text-sm hover:text-white transition">facebook.com/in3drga</a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-[2.5rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                    <div class="relative bg-zinc-800 rounded-[2rem] overflow-hidden h-[450px] shadow-2xl">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.324231456234!2d105.074321!3d10.015234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDAwJzU0LjgiTiAxMDXCsDA0JzI3LjYiRQ!5e0!3m2!1svi!2s!4v1650530000000!5m2!1svi!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
+                <div class="rounded-[2rem] overflow-hidden h-[350px] border border-white/10 group">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.324231456234!2d105.074321!3d10.015234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDAwJzU0LjgiTiAxMDXCsDA0JzI3LjYiRQ!5e0!3m2!1svi!2s!4v1650530000000!5m2!1svi!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="grayscale group-hover:grayscale-0 transition duration-1000"></iframe>
                 </div>
             </div>
-        </div>
-        <div class="bg-black py-8">
-            <div class="container mx-auto px-4 text-center">
-                <p class="text-zinc-700 text-xs font-black uppercase tracking-[0.4em]">© 2025 TIMI 3D PRINT STUDIO - AN GIANG</p>
+            
+            <div class="py-10 text-center">
+                <p class="text-zinc-600 text-[10px] font-bold uppercase tracking-[0.5em]">© 2025 TIMI 3D PRINT STUDIO - AN GIANG • MADE WITH PRECISION</p>
             </div>
         </div>
     </footer>
 
-    <!-- Floating Back to Top -->
-    <a href="#" class="fixed bottom-10 right-10 w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center shadow-2xl btn-hover z-50">
-        <i class="fas fa-arrow-up"></i>
+    <!-- Back to top -->
+    <a href="#" class="fixed bottom-8 right-8 w-12 h-12 bg-bambu text-white rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition duration-300 z-50">
+        <i class="fas fa-chevron-up"></i>
     </a>
 
     <script>
@@ -452,12 +477,10 @@
         function setMaterial(mat) {
             materialInput.value = mat;
             document.querySelectorAll('.mat-btn').forEach(btn => {
-                btn.classList.remove('bg-primary', 'text-white', 'border-primary');
-                btn.classList.add('border-gray-100', 'text-zinc-800');
+                btn.classList.remove('active-material');
             });
             const activeBtn = document.getElementById('btn-' + mat);
-            activeBtn.classList.remove('border-gray-100', 'text-zinc-800');
-            activeBtn.classList.add('bg-primary', 'text-white', 'border-primary');
+            activeBtn.classList.add('active-material');
             calculate();
         }
 
@@ -471,8 +494,8 @@
             const pass = passwordInput.value;
             
             if (weight <= 0) {
-                rateInfo.innerText = "Bắt đầu nhập khối lượng...";
-                rateInfo.className = "mt-4 text-xs font-bold italic py-2 px-4 bg-white rounded-lg inline-block shadow-sm";
+                rateInfo.innerText = "Nhập khối lượng file để tính giá...";
+                rateInfo.className = "mt-4 text-sm font-medium text-gray-400 italic";
                 resSubtotal.innerText = '0đ';
                 resDiscount.innerText = '-0đ';
                 resTotal.innerText = '0đ';
@@ -484,11 +507,11 @@
             let rate = weight >= 300 ? pricing[mat].over : pricing[mat].under;
             
             if (weight >= 300) {
-                rateInfo.innerText = `Đơn giá ưu đãi: ${rate}đ/g (Khối lượng lớn)`;
-                rateInfo.className = "mt-4 text-xs font-black italic py-2 px-4 bg-green-50 text-green-600 rounded-lg inline-block border border-green-100 shadow-sm";
+                rateInfo.innerText = `Ưu đãi in số lượng lớn: Đơn giá ${rate}đ/g`;
+                rateInfo.className = "mt-4 text-sm font-black text-bambu";
             } else {
-                rateInfo.innerText = `Đơn giá chuẩn: ${rate}đ/g (Khối lượng nhỏ)`;
-                rateInfo.className = "mt-4 text-xs font-black italic py-2 px-4 bg-blue-50 text-primary rounded-lg inline-block border border-blue-100 shadow-sm";
+                rateInfo.innerText = `Mức giá chuẩn: Đơn giá ${rate}đ/g`;
+                rateInfo.className = "mt-4 text-sm font-bold text-primary-blue";
             }
 
             let subtotal = weight * rate;
@@ -519,7 +542,7 @@
             }
         }
 
-        // Init with PETG
+        // Initialize with PETG
         setMaterial('petg');
         [weightInput, passwordInput].forEach(el => el.addEventListener('input', calculate));
     </script>
