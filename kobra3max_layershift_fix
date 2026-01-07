@@ -1,0 +1,34 @@
+; FLUSH_START
+M400
+T[next_extruder]
+
+;--- DI CHUYEN DEN VUNG CHO ---
+G1 E-5 F600
+G1 X445 F12000
+
+;--- QUY TRINH CAT DAY ---
+G1 X472.7 F600
+M400 P3000
+G1 E-1 F600
+G1 Z{max(toolchange_z+2.6, 7.0)} F600
+
+;--- NHA LO XO CHAM DE CHONG LECH TANG ---
+; Thay vi dung F18000 gay bung manh, dung F600 de motor giu chac truc X
+M400
+G1 X465 F600
+G1 X445 F6000
+
+;--- XA NHUA TAI MANG BEN PHAI ---
+; Bo qua cac lenh cho hang chuc giay de tiet kiem thoi gian
+G1 E15 F300
+M106 S255
+M400 P2000
+G1 X457 F12000
+G1 X445 F12000
+M106 S0
+
+;--- KET THUC VA QUAY LAI IN ---
+; Bo qua toan bo phan di chuyen sang X42/X102 de tranh va cham Tower
+G1 Z{toolchange_z} F3000
+M400
+; FLUSH_END
